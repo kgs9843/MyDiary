@@ -1,0 +1,457 @@
+:root {
+    --primary: #FEDC2A;
+    --complementary: #5A3B5D;
+    --lightsep: rgb(220, 220, 220);
+}
+
+/* "normal" state */
+.checkbox+label:before {
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(216, 216, 216);
+}
+
+/* transitionned state when checked */
+.checkbox:checked+label:before {
+    background: var(--complementary);
+    border-color: var(--complementary);
+}
+
+/* applying transition */
+.checkbox+label:before {
+    transition: background 0.2s, border-color 0.2s;
+    /* double transition, yup ! */
+}
+
+/* Let's animate the mark */
+.checkbox:not(:checked)+label:after {
+    transform: scale(0);
+}
+
+.checkbox:checked+label:after {
+    transform: scale(1);
+}
+
+.checkbox+label:after {
+    transition: transform 0.4s;
+}
+
+/* Creating the animation */
+@keyframes shakeMe {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-10px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(10px);
+    }
+}
+
+/* Applying the animation */
+.shake {
+    animation-name: shakeMe;
+    animation-duration: 0.5s;
+}
+
+.login-form {
+    background: var(--primary);
+    font-family: "Nanum Pen Script", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    background: #fff;
+    border: 1px solid #D9D9D9;
+    color: black;
+    width: 300px;
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 20px 30px;
+}
+
+.form h1 {
+    color: black;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 2em;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0px;
+    border-bottom: 1px solid var(--lightsep);
+}
+
+form p {
+    position: relative;
+    margin: 25px 0 10px 0;
+    position: relative;
+}
+
+p.remember {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--lightsep);
+}
+
+.email label,
+.password label,
+.input {
+    font-size: larger;
+    color: black;
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+
+.submitBox {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12%;
+}
+
+
+
+/* Submit button Styling */
+.loginBtn {
+    display: block;
+    color: var(--complementary);
+    font-weight: bold;
+    border-radius: 2px;
+    background: var(--primary);
+    box-shadow: 5px 5px 0 0 var(--primary), inset 4px 4px 0 0 white;
+    border: 2px solid var(--complementary);
+    border-radius: 3px;
+    padding: 10px;
+    width: 40%;
+    transition: background 0.3s;
+}
+
+.loginBtn:hover {
+    background: white;
+    box-shadow: 5px 5px 0 0 var(--primary), inset 4px 4px 0 0 white;
+}
+
+
+.nickname {
+    padding: 20px;
+}
+
+.nickname:focus {
+    outline: none;
+}
+
+[type='password'],
+[type='email'] {
+    padding: 20px;
+}
+
+[type='password']:focus,
+[type='email']:focus {
+    outline: none;
+}
+
+/* Styling the input */
+.input {
+    font-size: 0.85em;
+    background: rgb(255, 255, 255);
+    border: 1px solid var(--lightsep);
+    height: 40px;
+    transition: border-color 0.4s, box-shadow 1s;
+}
+
+.input:active,
+.input:focus {
+    border: 1px solid var(--complementary);
+    box-shadow: 4px 4px 0 #C7A9CD;
+}
+
+/* Removing the checkbox from screen */
+.checkbox {
+    position: absolute;
+    left: -300%;
+}
+
+.checkbox+label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+/* Creating the fake checkbox */
+.checkbox+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+}
+
+/* accessibility */
+.checkbox:focus+label:before {
+    border: 1px solid var(--complementary);
+    box-shadow: 2px 2px 0 #C7A9CD;
+}
+
+/* Adding the SVG mark */
+.checkbox+label:after {
+    content: ' ';
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.7 8.7" enable-background="new 0 0 10.7 8.7"><path fill="white" d="M4.2 8.7c-.3 0-.5-.3-.7-.5l-3.2-3.1c-.4-.4-.4-1.1 0-1.5s1-.4 1.4 0l2.4 2.3 4.9-5.6c.4-.4 1-.5 1.4-.1.4.4.5 1 .1 1.4l-5.6 6.6c-.1.2-.4.5-.7.5z"/></svg>') no-repeat;
+    position: absolute;
+    left: 2px;
+    top: 3px;
+    width: 13px;
+    height: 13px;
+}
+
+/****** Validation messages ******/
+
+.invalid {
+    border-color: rgb(183, 0, 76);
+}
+
+.required {
+    border-color: #B54300;
+}
+
+.validation {
+    display: block;
+    font-size: 0.8em;
+    padding-top: 0.5em;
+    right: 0;
+    opacity: 0;
+    transition: opacity 1s;
+    margin-left: 3%;
+}
+
+.validation.req {
+    color: #B54300;
+}
+
+.validation.error {
+    font-size: medium;
+    color: rgb(183, 0, 76);
+}
+
+.invalid:not(.required)~.validation.error {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.required~.validation.req {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.find-password:hover {
+    cursor: pointer;
+}
+
+.logo {
+    width: 10%;
+    margin-bottom: 5%;
+}
+
+
+.email-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.email-form input {
+    margin-right: 10px;
+    width: 75%;
+}
+
+.email-form button {
+    color: var(--complementary);
+    font-weight: bold;
+    border-radius: 2px;
+    background: var(--primary);
+    box-shadow: 5px 5px 0 0 var(--primary), inset 4px 4px 0 0 white;
+    border: 2px solid var(--complementary);
+    border-radius: 3px;
+    padding: 0%;
+    width: 20%;
+    transition: background 0.3s;
+}
+
+.email-form button:hover {
+    background: white;
+    box-shadow: 5px 5px 0 0 var(--primary), inset 4px 4px 0 0 white;
+}
+
+.emailCode {
+    font-size: 0.85em;
+    background: rgb(255, 255, 255);
+    border: 1px solid var(--lightsep);
+    height: 20px;
+    transition: border-color 0.4s, box-shadow 1s;
+    margin-left: 5%;
+}
+
+.emailCode:active,
+.emailCode:focus {
+    border: 1px solid var(--complementary);
+    box-shadow: 4px 4px 0 #C7A9CD;
+}
+
+.emailCheck-form {
+    display: flex;
+    justify-content: end;
+}
+
+.timerContainer {
+    margin-left: 5%;
+    width: 8%;
+}
+
+.check-form {
+    position: relative;
+}
+
+.codeCheckBtn {
+    position: absolute;
+    width: 10%;
+    top: 0;
+    bottom: 0;
+    right: 0.1rem;
+    margin: 0.2rem 0;
+    border-radius: 3px;
+    background: white;
+}
+
+.codeCheckBtn img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.codeCheckBtn img:hover {
+    cursor: pointer;
+    filter: drop-shadow(1px 1px 1px #c3c3c3);
+}
+
+
+/*loader*/
+.loader {
+    margin-left: 0;
+    animation: rotate 1s infinite;
+    height: 30px;
+    /* 더 줄임 */
+    width: 30px;
+    /* 더 줄임 */
+}
+
+.loader:before,
+.loader:after {
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 10px;
+    /* 10px로 줄임 */
+    width: 10px;
+    /* 10px로 줄임 */
+}
+
+.loader:before {
+    animation: ball1 1s infinite;
+    background-color: var(--primary);
+    box-shadow: 15px 0 0 var(--primary);
+    margin-bottom: 5px;
+}
+
+.loader:after {
+    animation: ball2 1s infinite;
+    background-color: var(--primary);
+    box-shadow: 15px 0 0 var(--primary);
+    /* 간격 줄임 */
+}
+
+.form h5 {
+    text-align: end;
+    color: gray;
+    cursor: pointer;
+    font-size: small;
+}
+
+@keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg) scale(0.8);
+        -moz-transform: rotate(0deg) scale(0.8);
+    }
+
+    50% {
+        -webkit-transform: rotate(360deg) scale(1.2);
+        -moz-transform: rotate(360deg) scale(1.2);
+    }
+
+    100% {
+        -webkit-transform: rotate(720deg) scale(0.8);
+        -moz-transform: rotate(720deg) scale(0.8);
+    }
+}
+
+@keyframes ball1 {
+    0% {
+        box-shadow: 15px 0 0 var(--primary);
+        /* 간격 줄임 */
+    }
+
+    50% {
+        box-shadow: 0 0 0 var(--primary);
+        margin-bottom: 0;
+        -webkit-transform: translate(7px, 7px);
+        /* 이동 거리 줄임 */
+        -moz-transform: translate(7px, 7px);
+        /* 이동 거리 줄임 */
+    }
+
+    100% {
+        box-shadow: 15px 0 0 var(--primary);
+        /* 간격 줄임 */
+        margin-bottom: 5px;
+    }
+}
+
+@keyframes ball2 {
+    0% {
+        box-shadow: 15px 0 0 var(--primary);
+        /* 간격 줄임 */
+    }
+
+    50% {
+        box-shadow: 0 0 0 var(--primary);
+        margin-top: -10px;
+        /* 상단 마진 조정 */
+        -webkit-transform: translate(7px, 7px);
+        /* 이동 거리 줄임 */
+        -moz-transform: translate(7px, 7px);
+        /* 이동 거리 줄임 */
+    }
+
+    100% {
+        box-shadow: 15px 0 0 var(--primary);
+        /* 간격 줄임 */
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,87 @@
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.canvas-container canvas {
+    border: 1px solid rgba(186, 186, 186, 0.87);
+    border-radius: 4px;
+}
+
+.tool-bar {
+    position: absolute;
+    top: 10px;
+    /* 적절한 위치로 조정 */
+    left: 10px;
+    /* 적절한 위치로 조정 */
+    padding: 4px;
+    border-radius: 10px;
+    background-color: #e7e6e7;
+    border: 1px solid #e7e6e7;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.tool-bar button {
+    padding: 4px;
+    border-radius: 10px;
+    border: none;
+    background-color: #e7e6e7;
+    cursor: pointer;
+}
+
+.tool-bar button svg {
+    fill: #000000;
+}
+
+
+.tool-bar button:disabled {
+    background-color: #FEDC2A;
+}
+
+.tool-bar button:disabled svg {
+    fill: #ffffff;
+}
+
+.eraser {
+    width: 20px;
+    height: 20px;
+}
+
+.penColor {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.pic:hover {
+    background-color: #FEDC2A;
+}
+
+.pic:hover svg g {
+    fill: #ffffff;
+}
+
+.undo:hover {
+    background-color: #FEDC2A;
+}
+
+.undo:hover svg g {
+    fill: #ffffff;
+}
+
+
+.redo:hover {
+    background-color: #FEDC2A;
+}
+
+.redo:hover svg g {
+    fill: #ffffff;
+}
+
+.reset:hover {
+    background-color: #FEDC2A;
+}
+
+.reset:hover svg g {
+    fill: #ffffff;
+}
