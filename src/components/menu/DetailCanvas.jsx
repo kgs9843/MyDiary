@@ -22,39 +22,53 @@ const DetailCanvas = ({ canvasData }) => {
                 height: 500
             });
             setImageData(dataURL)
+            console.log(dataURL)
             setCheck(true)
         }
     }, [check]);
 
+
     useEffect(() => {
         if (!canvasRef.current) return;
-        const newCanvas = new Canvas(canvasRef.current, {
-            width: 450,
-            height: 500
-        });
-        setCanvas(newCanvas);
 
-        if (canvasData) {
-            try {
-                const parsedCanvasData = JSON.parse(canvasData);
+        // 지연 시간 설정 (예: 500ms)
+        const delay = 500;
 
-                newCanvas.loadFromJSON(parsedCanvasData, () => {
-                    newCanvas.renderAll();
-                });
-            } catch (error) {
-                alert("오류 발생 다시시도 바람");
-                console.error('Error parsing canvas data:', error);
+        const timer = setTimeout(() => {
+            const newCanvas = new Canvas(canvasRef.current, {
+                width: 450,
+                height: 500
+            });
+            setCanvas(newCanvas);
+
+            if (canvasData) {
+                try {
+                    newCanvas.loadFromJSON(canvasData, () => {
+                        newCanvas.renderAll();
+                    });
+                } catch (error) {
+                    alert("오류 발생 다시 시도 바람");
+                    console.error('Error parsing canvas data:', error);
+                }
             }
-        }
 
-        return () => {
-            newCanvas.dispose();
-        };
+            return () => {
+                newCanvas.dispose();
+            };
+        }, delay);
+
+        // 컴포넌트가 언마운트될 때 타이머 정리
+        return () => clearTimeout(timer);
     }, [canvasData]);
 
     useEffect(() => {
-        if (!canvas || !canvasData) return;
-        saveState(canvas);
+        if (canvas) {
+            const timer = setTimeout(() => {
+                saveState(canvas);
+            }, 100); // 100ms 지연 후 캡처
+
+            return () => clearTimeout(timer);
+        }
     }, [canvas, canvasData, saveState]);
 
     if (!check) {
@@ -97,9 +111,12 @@ const DetailCanvas = ({ canvasData }) => {
     }
 
     return (
-        <div className='canvas'>
-            <img className='canvasImage' src={imageData} alt="Canvas representation" />
-        </div>
+        <>
+
+            <div className='canvas'>
+                <img className='canvasImage' src={imageData} alt="Canvas representation" />
+            </div>
+        </>
     )
 }
 

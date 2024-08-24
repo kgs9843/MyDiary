@@ -45,7 +45,6 @@ function ResponsiveAppBar() {
             const response = await api.get(`/api/user-status`);
             if (response.status === 200) {
                 const diary = response.data.admin;
-                console.log(diary)
                 setProfileImage(`http://localhost:8080${response.data.profileImageUrl}`);
                 if (diary) {
                     //관리자이면 true

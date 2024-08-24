@@ -151,7 +151,10 @@ const DiaryContent = () => {
                         marginTop: '15px', // 텍스트와 밑줄 사이의 간격
                     }} />
                 </Grid>
-                <Grid xs={12} md={6} sx={{ marginTop: 5, paddingRight: 2 }} >
+                <Grid xs={12} md={6} sx={{
+                    marginTop: 5, paddingRight: 2,
+                    height: '500px'
+                }} >
                     <Box
                         sx={{
                             paddingTop: 0,
@@ -159,6 +162,7 @@ const DiaryContent = () => {
                         }}
                     >
                         <DetailCanvas canvasData={canvasData} />
+
                     </Box>
                 </Grid>
 
