@@ -68,7 +68,7 @@ app.get('/', (req, res) => {
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-}).then(() => console.log("몽고db연결 성공")).catch(() => console.log("몽고 db연결 실패"))
+}).then(() => console.log(`몽고db연결 성공`)).catch(() => console.log(`몽고 db연결 실패`))
 
 
 
@@ -1093,6 +1093,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(8080, function () {
+app.listen(8080, '0.0.0.0', function () {
     console.log('listening on 8080');
 }); //8080port에 서버를 연다, 열고 함수기능 수행

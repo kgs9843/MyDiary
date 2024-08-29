@@ -26,8 +26,6 @@ function StartScreen() {
             }
         } catch (error) {
             console.error('Error fetching users:', error);
-        } finally {
-            setLoading(false); // 비동기 작업이 완료되면 로딩 상태를 false로 설정
         }
     };
 
@@ -77,42 +75,6 @@ function StartScreen() {
 
     // 인덱스 값을 가져와서 UI에 표시
     const index = getTokenIndex();
-
-    if (loading) {
-        return (
-            <React.Fragment>
-                <CssBaseline>
-                    <Box textAlign={'center'}>
-                        <Typography
-                            sx={{
-                                marginTop: 5,
-                                fontSize: 40,
-                                fontFamily: "Nanum Pen Script",
-                                color: 'black',
-                                display: 'inline-block',
-                                padding: '10px',
-                            }
-                            }
-                        >
-                            <h1 className='title'>
-                                <span>L</span>
-                                <span>o</span>
-                                <span>a</span>
-                                <span>d</span>
-                                <span>i</span>
-                                <span>n</span>
-                                <span>g</span>
-                                <span>.</span>
-                                <span>.</span>
-                                <span>.</span>
-                            </h1>
-                        </Typography>
-                    </Box>
-                </CssBaseline>
-            </React.Fragment>
-        )
-
-    }
 
 
 
