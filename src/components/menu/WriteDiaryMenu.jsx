@@ -13,6 +13,8 @@ import dayjs from 'dayjs';
 import api from '../../utils/api'
 import '../../css/loader.css'
 
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+
 const WriteDiaryForm = () => {
     const navigate = useNavigate();
     const { id } = useParams(); // URL 파라미터에서 id를 가져옵니다.
@@ -104,7 +106,7 @@ const WriteDiaryForm = () => {
         try {
             for (let i = 0; i < canvasChunks.length; i++) {
                 const chunk = canvasChunks[i];
-                const response = await axios.post('http://localhost:8080/api/upload-canvas-chunk', {
+                const response = await axios.post(`${serverUrl}/api/upload-canvas-chunk`, {
                     chunk,
                     index: i,
                     totalChunks: canvasChunks.length,
@@ -134,7 +136,7 @@ const WriteDiaryForm = () => {
 
             }
             else {
-                const response = await axios.post('http://localhost:8080/api/write-diary-form', diaryEntry, {
+                const response = await axios.post(`${serverUrl}/api/write-diary-form`, diaryEntry, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`, // 토큰을 Authorization 헤더에 포함

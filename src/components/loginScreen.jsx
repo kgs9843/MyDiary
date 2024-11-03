@@ -10,6 +10,9 @@ import Cookies from 'js-cookie';
 import { isTokenValid } from '../utils/auth';
 import api from '../utils/api'
 
+
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+
 const Timer = ({ count, setCount, setIsTimer }) => {
     const formatTime = time => {
         const minutes = Math.floor(time / 60);
@@ -90,7 +93,7 @@ const SubmitForm = (props) => {
             }
             else {
                 try {
-                    const response = await axios.post('http://localhost:8080/check-nickname', { nickname: nickname });
+                    const response = await axios.post(`${serverUrl}/check-nickname`, { nickname: nickname });
                     if (!response.data.isAvailable) {
                         error = '닉네임이 이미 사용 중입니다'
                     }
@@ -134,7 +137,7 @@ const SubmitForm = (props) => {
             // 회원가입 성공
             console.log('Form submitted');
             try {
-                const response = await axios.post('http://localhost:8080/api/register/users', { email: email.trim(), nickname: nickname.trim(), password: password.trim() });
+                const response = await axios.post(`${serverUrl}/api/register/users`, { email: email.trim(), nickname: nickname.trim(), password: password.trim() });
                 if (response.status === 201) {
                     props.setHome(true)
                 }
@@ -158,7 +161,7 @@ const SubmitForm = (props) => {
             let error = '';
             try {
                 //alert(email);
-                const response = await axios.post('http://localhost:8080/check-email', { email: email });
+                const response = await axios.post(`${serverUrl}/check-email`, { email: email });
                 if (!response.data.success) {
                     error = '이메일이 이미 사용 중입니다'
                     //alert(error)
@@ -176,7 +179,7 @@ const SubmitForm = (props) => {
             if (!error) {
                 try {
                     setLoading(true)
-                    const response = await axios.post('http://localhost:8080/send-email', { email: email });
+                    const response = await axios.post(`${serverUrl}/send-email`, { email: email });
                     if (response.data.success) {
                         setVerificationCode(false);
                         setIsTimer(true);
@@ -198,7 +201,7 @@ const SubmitForm = (props) => {
 
     const checkCode = async (e) => {
         try {
-            const response = await axios.post('http://localhost:8080/send-code', { code: code, email: email });
+            const response = await axios.post(`${serverUrl}/send-code`, { code: code, email: email });
             if (response.data.success) {
                 setVerificationCode(true);
                 setFirstCheck(true)
@@ -526,7 +529,7 @@ const FindPassword = (props) => {
             let error = '';
             try {
                 //alert(email);
-                const response = await axios.post('http://localhost:8080/check-email', { email: email });
+                const response = await axios.post(`${serverUrl}/check-email`, { email: email });
                 if (response.data.success) {
                     error = '이메일이 없습니다.'
                     //alert(error)
@@ -544,7 +547,7 @@ const FindPassword = (props) => {
             if (!error) {
                 try {
                     setLoading(true)
-                    const response = await axios.post('http://localhost:8080/send-email', { email: email });
+                    const response = await axios.post(`${serverUrl}/send-email`, { email: email });
                     if (response.data.success) {
                         setVerificationCode(false);
                         setIsTimer(true);
@@ -576,7 +579,7 @@ const FindPassword = (props) => {
         if (isEmailValid && isPasswordValid && isPasswordCheckValid && verificationCode) {
             console.log('Form submitted');
             try {
-                const response = await axios.post('http://localhost:8080/changePassword', { email, password });
+                const response = await axios.post(`${serverUrl}/changePassword`, { email, password });
 
                 if (response.status === 200) {
                     alert('비밀번호 변경 성공');
@@ -599,7 +602,7 @@ const FindPassword = (props) => {
 
     const checkCode = async (e) => {
         try {
-            const response = await axios.post('http://localhost:8080/send-code', { code: code, email: email });
+            const response = await axios.post(`${serverUrl}/send-code`, { code: code, email: email });
             if (response.data.success) {
                 setVerificationCode(true);
                 setFirstCheck(true)

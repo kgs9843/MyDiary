@@ -11,6 +11,8 @@ import 'dayjs/locale/ko'; // 한국어 로케일 import
 import axios from 'axios';
 dayjs.locale('ko'); // dayjs의 로케일을 한국어로 설정
 
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+
 const NoticeContent = () => {
     const navigate = useNavigate();
     const { id } = useParams();
@@ -26,7 +28,7 @@ const NoticeContent = () => {
             if (!id) return;
 
             try {
-                const response = await axios.get(`http://localhost:8080/api/edit-notices/${id}`);
+                const response = await axios.get(`${serverUrl}/api/edit-notices/${id}`);
                 if (response.status === 200) {
                     const diary = response.data;
                     const formatDate = dayjs(diary.date).format('YYYY년 MM월 DD일 dddd');

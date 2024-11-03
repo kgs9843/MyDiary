@@ -33,10 +33,9 @@ if (!fs.existsSync(tempCanvasDir)) {
 }
 
 // // Middleware
-// app.use(cors({
-//     origin: 'http://localhost:3000', // 클라이언트의 URL
-//     credentials: true, // 자격 증명 허용
-// }));
+app.use(cors({
+    origin: '*'
+}));
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/build')));

@@ -13,6 +13,8 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import SearchIcon from '@mui/icons-material/Search';
 import '../../css/loading.css'
 
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+
 
 const NoticesMenuForm = () => {
     const [notices, setNotices] = useState([]);
@@ -54,7 +56,7 @@ const NoticesMenuForm = () => {
         const inputValue = title;
         if (inputValue) {
             try {
-                const response = await axios.get('http://localhost:8080/api/notices/search', { params: { inputValue } });
+                const response = await axios.get(`${serverUrl}/api/notices/search`, { params: { inputValue } });
                 if (response.status === 200) {
                     if (response.data.message) {
                         setMessage(response.data.message); // "공지가 없습니다" 메시지 설정
@@ -69,7 +71,7 @@ const NoticesMenuForm = () => {
             }
         } else {
             try {
-                const response = await axios.get('http://localhost:8080/api/notices');
+                const response = await axios.get(`${serverUrl}/api/notices`);
                 if (response.status === 200) {
                     setNotices(response.data);
                 }
@@ -109,7 +111,7 @@ const NoticesMenuForm = () => {
     useEffect(() => {
         const fetchnotices = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/notices');
+                const response = await axios.get(`${serverUrl}/api/notices`);
                 if (response.status === 200) {
                     setNotices(response.data);
                 }

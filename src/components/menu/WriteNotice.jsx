@@ -12,6 +12,8 @@ import api from '../../utils/api'
 import axios from 'axios';
 
 
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+
 
 const WriteDiaryForm = () => {
     const navigate = useNavigate();
@@ -70,7 +72,7 @@ const WriteDiaryForm = () => {
         try {
 
             if (id) {
-                const response = await axios.put(`http://localhost:8080/edit-notice-form/${id}`, noticeEntry, {
+                const response = await axios.put(`${serverUrl}/edit-notice-form/${id}`, noticeEntry, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'

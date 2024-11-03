@@ -30,6 +30,8 @@ const EditUserForm = () => {
     const [nicknameError, setNicknameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
+    const serverUrl = process.env.REACT_APP_SERVER_URL;
+
     const itemsPerPage = 9; // 페이지당 항목 수
 
 
@@ -169,7 +171,7 @@ const EditUserForm = () => {
 
             if (userInformation.nickname !== trimmedNickname) {
                 try {
-                    const response = await axios.post('http://localhost:8080/check-nickname', { nickname: trimmedNickname });
+                    const response = await axios.post(`${serverUrl}/check-nickname`, { nickname: trimmedNickname });
                     if (!response.data.isAvailable) {
                         setNicknameError('닉네임이 이미 사용 중입니다')
                     }
