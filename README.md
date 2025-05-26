@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+# Mada - 마이다이어리 (My Diary)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Mada**는 사용자가 그림 일기를 작성하고 공유할 수 있는 웹 애플리케이션입니다. 사용자들은 자신만의 귀여운 캐릭터와 함께 일상을 기록하고, 관리자는 사용자 및 게시물을 관리할 수 있습니다.
 
-## Available Scripts
+![홈 화면](https://storage.googleapis.com/generativeai-downloads/images/4111f877a91d2a00/홈%20화면.png)
 
-In the project directory, you can run:
+## 목차
 
-### `npm start`
+- [주요 기능](#주요-기능)
+  - [사용자 기능](#사용자-기능)
+  - [관리자 기능](#관리자-기능)
+- [기술 스택](#기술-스택)
+- [시작하기](#시작하기)
+  - [사전 준비](#사전-준비)
+  - [설치 및 실행](#설치-및-실행)
+- [화면 구성](#화면-구성)
+- [향후 개선 사항 (선택 사항)](#향후-개선-사항-선택-사항)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 주요 기능
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 사용자 기능
 
-### `npm test`
+* **회원가입 및 로그인:** 안전한 인증 시스템을 통해 서비스를 이용할 수 있습니다.
+    * ![로그인](https://storage.googleapis.com/generativeai-downloads/images/4111f887394d2a00/로그인.png)
+* **일기 작성:** 날짜, 날씨, 제목, 그림판을 이용한 그림, 텍스트 내용을 포함한 일기를 작성할 수 있습니다.
+    * ![일기 작성](https://storage.googleapis.com/generativeai-downloads/images/4111f879493d2a00/일기%20작성.png)
+* **일기 조회:** 작성한 일기 목록을 확인하고, 특정 일기를 선택하여 내용을 조회할 수 있습니다.
+    * ![일기들 조회](https://storage.googleapis.com/generativeai-downloads/images/4111f87d895d2a00/일기들%20조회.png)
+    * ![일기 조회](https://storage.googleapis.com/generativeai-downloads/images/4111f87b395d2a00/일기%20조회.png)
+* **일기 수정 및 삭제:** 자신이 작성한 일기를 수정하거나 삭제할 수 있습니다.
+* **프로필 관리:** 자신의 프로필 정보를 확인하고 수정할 수 있습니다. (기본 캐릭터 포함)
+    * ![프로필 화면](https://storage.googleapis.com/generativeai-downloads/images/4111f87f397d2a00/프로필%20화면.png)
+* **공지사항 확인:** 관리자가 등록한 공지사항을 확인할 수 있습니다.
+* **모바일 지원:** 모바일 환경에서도 편리하게 일기를 작성하고 확인할 수 있습니다.
+    * ![모바일 화면](https://storage.googleapis.com/generativeai-downloads/images/4111f876f91d2a00/모바일%20화면.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 관리자 기능
 
-### `npm run build`
+* **사용자 기능 모두 포함:** 관리자도 일반 사용자와 동일하게 일기 관련 기능을 사용할 수 있습니다.
+* **회원 관리:** 등록된 회원 목록을 조회하고, 특정 회원의 정보를 관리 (예: 삭제, 권한 변경 등)할 수 있습니다.
+    * ![회원관리](https://storage.googleapis.com/generativeai-downloads/images/4111f882795d2a00/회원관리.png)
+* **공지사항 관리:** 공지사항을 작성, 수정, 삭제할 수 있습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 기술 스택
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* **Frontend:** React
+* **Backend:** Node.js, Express.js (언급되진 않았지만 Node.js 백엔드의 일반적인 프레임워크)
+* **Database:** MongoDB
+* **Deployment (예상):** (추후 명시)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 시작하기
 
-### `npm run eject`
+### 사전 준비
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+프로젝트를 로컬 환경에서 실행하기 전에 다음 소프트웨어가 설치되어 있어야 합니다:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Node.js (npm 포함)
+* MongoDB (로컬 또는 원격 데이터베이스 설정)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 설치 및 실행
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1.  **프로젝트 클론:**
+    ```bash
+    git clone <repository-url>
+    cd mada-my-diary
+    ```
 
-## Learn More
+2.  **의존성 설치:**
+    프로젝트 루트 디렉토리에서 다음 명령어를 실행합니다. (프론트엔드와 백엔드 디렉토리가 분리되어 있다면 각 디렉토리에서 실행 필요)
+    ```bash
+    npm install
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3.  **환경 변수 설정:**
+    MongoDB 연결 URI 등 필요한 환경 변수를 설정합니다. `.env.example` 파일이 있다면 이를 복사하여 `.env` 파일을 생성하고 내용을 채웁니다.
+    ```
+    MONGODB_URI=your_mongodb_connection_string
+    PORT=your_preferred_port (e.g., 3001 for backend)
+    # 기타 필요한 환경 변수
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4.  **백엔드 서버 실행:**
+    (백엔드 디렉토리에서 실행)
+    ```bash
+    npm run dev  # 또는 node server.js,nodemon server.js 등 프로젝트 설정에 따름
+    ```
 
-### Code Splitting
+5.  **프론트엔드 개발 서버 실행:**
+    (프론트엔드 디렉토리에서 실행)
+    ```bash
+    npm run dev
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+이제 웹 브라우저에서 `http://localhost:xxxx` (프론트엔드 개발 서버 포트)로 접속하여 Mada를 사용할 수 있습니다.
 
-### Analyzing the Bundle Size
+## 화면 구성
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* **로그인 페이지 (`로그인.png`):** 이메일과 비밀번호를 입력하여 로그인하거나 회원가입 페이지로 이동합니다.
+* **홈 화면 (`홈 화면.png`):** 로그인 후 보여지는 메인 화면으로, 일기 작성 및 조회 등의 주요 기능으로 접근할 수 있습니다.
+* **프로필 화면 (`프로필 화면.png`):** 사용자 정보(닉네임, 이메일, 일기 개수 등) 및 캐릭터를 보여줍니다.
+* **일기 작성 페이지 (`일기 작성.png`):** 날짜, 날씨 선택, 제목 입력, 그림판, 내용 입력 필드로 구성됩니다.
+* **일기 조회 페이지 (`일기 조회.png`):** 특정 일기의 상세 내용을 그림과 함께 보여줍니다. 수정 및 삭제 버튼이 제공될 수 있습니다.
+* **일기 목록 페이지 (`일기들 조회.png`):** 작성된 일기들을 리스트 형태로 보여주며, 검색 및 페이징 기능을 제공합니다.
+* **회원 관리 페이지 (관리자) (`회원관리.png`):** 관리자가 회원 목록을 카드 형태로 조회하고 관리할 수 있습니다.
+* **모바일 화면 (`모바일 화면.png`):** 모바일 환경에 최적화된 UI를 제공하여 일기 작성 및 조회가 용이합니다.
 
-### Making a Progressive Web App
+## 향후 개선 사항 (선택 사항)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* 친구 기능 및 일기 공유 기능
+* 다양한 캐릭터 커스터마이징 옵션
+* 태그 기반 일기 검색
+* 월별/감정별 통계 기능
+* 알림 기능 (새 공지, 댓글 등)
