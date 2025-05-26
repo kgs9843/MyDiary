@@ -76,7 +76,9 @@
     ```
 
 4.  **서버 실행 **
-   npm run dev
+   ```
+npm run dev
+```
 
 이제 웹 브라우저에서 `http://localhost:xxxx` (프론트엔드 개발 서버 포트)로 접속하여 Mada를 사용할 수 있습니다.
 
