@@ -57,7 +57,7 @@
 
 1.  **프로젝트 클론:**
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/kgs9843/MyDiary.git
     cd mada-my-diary
     ```
 
